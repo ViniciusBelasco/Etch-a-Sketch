@@ -1,18 +1,34 @@
 const board = document.querySelector(".board");
-const GRID_SIZE = 16
+                                                        const btnSize = document.querySelector("button");
+const INITIAL_VALUE = 16;
 
-const squareSize = board.width / GRID_SIZE;
+function drawBoard(gridSize) {
 
-for (let height = 0; height < Math.pow(GRID_SIZE, 2); height++) {
+    const gridProportion = 100/gridSize; 
 
-    const grid = document.createElement("div");
+    for (let height = 0; height < Math.pow(gridSize, 2); height++) {
 
-    grid.style.width = `${squareSize}px`;
-    grid.style.height = `${squareSize}px`;
+        const grid = document.createElement("div");
 
-    grid.addEventListener("mouseover", (event) => {
-        event.target.style.backgroundColor = 'black'
-    })
+        grid.style.flex = `0 0 ${gridProportion}%`
 
-    board.appendChild(grid);
+        grid.addEventListener("mouseover", (event) => {
+            event.target.style.backgroundColor = 'black'
+        })
+
+        board.appendChild(grid);
+    }
+
 }
+
+btnSize.addEventListener("click", () => {
+    const newSize = prompt("Qual o tamanho que deseja utilizar?")
+
+    const fields = board.querySelectorAll("div");
+
+    fields.forEach( (field) => {board.removeChild(field)} )
+
+    drawBoard( newSize );
+})
+
+drawBoard( INITIAL_VALUE );
