@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+.board {
+    width: 960px;
+    height: 960px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: red;
+}
+
+.board div {
+    flex: 0 0 6.25%;
+    aspect-ratio: 1;
+    background-color: blue;
+    border: 1px solid black;
+}
